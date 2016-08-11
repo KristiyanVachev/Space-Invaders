@@ -42,13 +42,23 @@ Player.prototype.getID = function(){
 }
 
 Player.prototype.moveLeft = function (ctx) {
-    this.x -= 10;
-    ctx.clearRect(this.x + 10, this.y, this.width, this.height);
+    if (this.id == 99 && this.x < 15) {
+        return;
+    }
+    else{
+        this.x -= 10;
+        ctx.clearRect(this.x + 10, this.y, this.width, this.height);
+    }
 };
 
 Player.prototype.moveRight = function (ctx) {
-    this.x += 10;
-    ctx.clearRect(this.x - 10, this.y, this.width, this.height);
+    if (this.id == 99 && this.x > 660) {
+        return;
+    }
+    else{
+        this.x += 10;
+        ctx.clearRect(this.x - 10, this.y, this.width, this.height);
+    }
 };
 
 Player.prototype.shoot = function () {

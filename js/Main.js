@@ -4,32 +4,36 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 invadersArr = [];
-var player, enemy1state1, enemy1state2, enemy2state1, enemy2state2, enemy3state1, enemy3state2, bonus, invader, currSourceY, currID, danceCounter = 1, isRight = true;
+var player, currEnemy, bonus, invader, currSourceY, currID, danceCounter = 1, isRight = true;
 
 // context.drawImage(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
 loadImages(sources, function(images) {
-    player = new Player(images.spaceInvadersSpriteSheet, 8, 152, 120, 64, 350, 500, 120, 64, 99);
-    enemy1state1 = new Player(images.spaceInvadersSpriteSheet, 8, 8, 65, 65, 350, 120, 65, 65, 11);
-    enemy1state2 = new Player(images.spaceInvadersSpriteSheet, 8, 81, 65, 65, 280, 120, 65, 65, 12);
-    enemy2state1 = new Player(images.spaceInvadersSpriteSheet, 81, 8, 96, 65, 120, 120, 96, 65, 21);
-    enemy2state2 = new Player(images.spaceInvadersSpriteSheet, 81, 81, 96, 65, 420, 120, 96, 65, 22);
-    enemy3state1 = new Player(images.spaceInvadersSpriteSheet, 185, 8, 86, 66, 400, 221, 86, 66, 31);
-    enemy3state2 = new Player(images.spaceInvadersSpriteSheet, 185, 82, 86, 66, 300, 220, 86, 66, 32);
+    player = new Player(images.spaceInvadersSpriteSheet, 8, 152, 120, 64, 350, 530, 120, 64, 99);
+
+    ///first line
+    for (var i = 0; i < 8; i++) {
+        currEnemy = new Player(images.spaceInvadersSpriteSheet, 8, 8, 65, 65, i * 80 + 50, 120, 65, 65, 11);
+        invadersArr.push(currEnemy);
+    }
+    
+    ///second line
+    for (var i = 0; i < 6; i++) {
+        currEnemy = new Player(images.spaceInvadersSpriteSheet, 81, 8, 96, 65, i * 108 + 50, 200, 96, 65, 21);
+        invadersArr.push(currEnemy);
+    }
+
+    ///thirth line
+    for (var i = 0; i < 7; i++) {
+        currEnemy = new Player(images.spaceInvadersSpriteSheet, 185, 8, 86, 66, i * 92 + 50, 280, 86, 66, 31);
+        invadersArr.push(currEnemy);
+    }
+
     bonus = new Player(images.spaceInvadersSpriteSheet, 144, 160, 128, 56, 150, 500, 128, 56, 69);
 
-    invadersArr.push(enemy1state1);
-    invadersArr.push(enemy1state2);
-    invadersArr.push(enemy2state1);
-    invadersArr.push(enemy2state2);
-    invadersArr.push(enemy3state1);
-    invadersArr.push(enemy3state2);
+    for (var i = 0; i < invadersArr.length; i++) {
+        invadersArr[i].draw(ctx);
+    }
 
-    enemy1state1.draw(ctx);
-    enemy1state2.draw(ctx);
-    enemy2state1.draw(ctx);
-    enemy2state2.draw(ctx);
-    enemy3state1.draw(ctx);
-    enemy3state2.draw(ctx);
     //bonus.draw(ctx);
     player.draw(ctx);
 });
@@ -50,7 +54,7 @@ function animateInvaders() {
        // console.log("kop4e");
        if (isRight) {
            danceCounter++;
-           if (danceCounter == 10) {
+           if (danceCounter == 6) {
                isRight = false;
            }
        }
