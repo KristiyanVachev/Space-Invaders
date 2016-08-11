@@ -1,0 +1,3 @@
+function GenerateLevel(levelCount, enemyCount) {
+    
+}
