@@ -22,3 +22,8 @@ function moveRight(){
     player.moveRight();
     player.draw(ctx);
 }
+
+function shoot(){
+    player.shoot();
+
+}

@@ -5,7 +5,7 @@ function Player(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, x, y, wid
     var _this = this;
 
     // constructor
-    (function() {
+    (function () {
         _this.imgSrc = imageObj || null;
         _this.sourceX = sourceX || null;
         _this.sourceY = sourceY || null;
@@ -19,6 +19,7 @@ function Player(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, x, y, wid
     })();
 }
 
+
 Player.prototype.draw = function (ctx) {
     ctx.drawImage(this.imgSrc, this.sourceX, this.sourceY, this.sourceWidth, this.sourceHeight, this.x, this.y, this.width, this.height);
 };
@@ -29,4 +30,11 @@ Player.prototype.moveLeft = function () {
 
 Player.prototype.moveRight = function () {
     this.x += 2;
+};
+
+Player.prototype.shoot = function () {
+
+    var projectile = new Projectile(this.x + (this.width / 2), this.y);
+    projectile.initiate();
+
 };
