@@ -1,9 +1,12 @@
 /**
  * Created by Plamen Y. Ivanov on 8/4/2016.
  */
+var projectile;
+
     // constructor
 function Player(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, id) {
     var _this = this;
+    projectile = new Projectile();
 
     // constructor
     (function () {
@@ -39,7 +42,7 @@ Player.prototype.changePictureAndDance = function(sourceY, id, isRight, distance
 
 Player.prototype.getID = function(){
     return this.id;
-}
+};
 
 Player.prototype.moveLeft = function (ctx) {
     if (this.id == 99 && this.x < 15) {
@@ -63,5 +66,5 @@ Player.prototype.moveRight = function (ctx) {
 
 Player.prototype.shoot = function () {
     console.log("create new projectile");
-    new Projectile(this.x + (this.width / 2), this.y);
+    projectile.init(this.x + (this.width / 2), this.y);
 };

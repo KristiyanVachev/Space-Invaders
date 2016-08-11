@@ -4,28 +4,38 @@
 
 var x,
     y,
-    speed = 5;
+    speed = 5,
+    canShoot;
 
-function Projectile(startX, startY) {
+function Projectile() {
     console.log("created projectile");
     var _this = this;
+    canShoot = true;
 
     // constructor
     (function () {
-        _this.x = startX;
-        _this.y = startY - 20;
-        _this.speed = 5;
+        _this.x = null;
+        _this.y = null;
 
     })();
-    // ctx.fillRect(this.x, this.y, 3, 15);
+
     console.log("start: " + this.y);
-    x = this.x;
-    y = this.y;
-    animate()
+
 }
 
+Projectile.prototype.init = function(startX, startY) {
 
-function animate() {
+    if(canShoot){
+        canShoot = false;
+
+        x = startX;
+        y = startY;
+        animateProjectile();
+    }
+};
+
+
+function animateProjectile() {
     console.log(x, y, speed);
     //clear previous
     ctx.clearRect(x, y + speed, 3, 15);
@@ -34,7 +44,12 @@ function animate() {
     y = y - speed;
 
     if (y > 0) {
-        window.requestAnimationFrame(animate);
+        window.requestAnimationFrame(animateProjectile);
     }
+    else{
+        canShoot = true;
+    }
+
+
 }
 

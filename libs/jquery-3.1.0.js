@@ -6459,7 +6459,7 @@ jQuery.cssHooks.marginLeft = addGetHookIf( support.reliableMarginLeft,
 	}
 );
 
-// These hooks are used by animate to expand properties
+// These hooks are used by animateProjectile to expand properties
 jQuery.each( {
 	margin: "",
 	padding: "",
@@ -7216,7 +7216,7 @@ jQuery.each( [ "toggle", "show", "hide" ], function( i, name ) {
 	jQuery.fn[ name ] = function( speed, easing, callback ) {
 		return speed == null || typeof speed === "boolean" ?
 			cssFn.apply( this, arguments ) :
-			this.animate( genFx( name, true ), speed, easing, callback );
+			this.animateProjectile( genFx( name, true ), speed, easing, callback );
 	};
 } );
 
@@ -7230,7 +7230,7 @@ jQuery.each( {
 	fadeToggle: { opacity: "toggle" }
 }, function( name, props ) {
 	jQuery.fn[ name ] = function( speed, easing, callback ) {
-		return this.animate( props, speed, easing, callback );
+		return this.animateProjectile( props, speed, easing, callback );
 	};
 } );
 
