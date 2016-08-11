@@ -109,4 +109,9 @@ function animateInvaders() {
             animateInvaders();
         }, 250);
 }
+
 animateInvaders();
+
+function shoot(){
+    player.shoot();
+}

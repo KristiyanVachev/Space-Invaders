@@ -41,6 +41,7 @@ $(document).keydown(function (e) {
     }
     if(e.which == 32){
         console.log("Player 1 Shoots!");
+        requestAnimationFrame(shoot);
     }
 });
 

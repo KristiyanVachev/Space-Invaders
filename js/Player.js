@@ -1,11 +1,12 @@
 /**
  * Created by Plamen Y. Ivanov on 8/4/2016.
  */
+    // constructor
 function Player(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, id) {
     var _this = this;
 
     // constructor
-    (function() {
+    (function () {
         _this.imgSrc = imageObj || null;
         _this.sourceX = sourceX || null;
         _this.sourceY = sourceY || null;
@@ -46,4 +47,9 @@ Player.prototype.moveLeft = function () {
 
 Player.prototype.moveRight = function () {
     this.x += 10;
+};
+
+Player.prototype.shoot = function () {
+    console.log("create new projectile");
+    new Projectile(this.x + (this.width / 2), this.y);
 };
