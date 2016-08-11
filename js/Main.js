@@ -107,5 +107,5 @@ function animateInvaders() {
 animateInvaders();
 
 function shoot(){
-    player.shoot();
+    player.shoot(invadersArr);
 }

@@ -64,7 +64,7 @@ Player.prototype.moveRight = function (ctx) {
     }
 };
 
-Player.prototype.shoot = function () {
+Player.prototype.shoot = function (invadersArr) {
     console.log("create new projectile");
-    projectile.init(this.x + (this.width / 2), this.y);
+    projectile.init(this.x + (this.width / 2), this.y, invadersArr);
 };
