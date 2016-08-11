@@ -3,32 +3,32 @@
  */
 
 function Projectile(startX, startY) {
+    console.log("created projectile");
     var _this = this;
 
     // constructor
     (function () {
         _this.x = startX;
-        _this.y = startY;
+        _this.y = startY - 20;
         _this.speed = 5;
 
     })();
-
-    console.log("created projectile");
-    animate();
-
-    
+   // ctx.fillRect(this.x, this.y, 3, 15);
+    console.log("start: " + this.y);
+    animate(this.x, this.y, this.speed)
 }
 
+function animate(x, y, speed) {
+    console.log(speed);
 
-
-function animate() {
-    console.log('projectile shooted');
     //clear previous
-    ctx.clearRect(this.x, this.y + this.speed, 3, 15);
+   // ctx.clearRect(x, y + speed, 3, 15);
 
-    ctx.fillRect(this.x, this.y, 3, 15);
-    this.y -= this.speed;
+    ctx.fillRect(x, y, 3, 15);
+    y = y - speed;
 
-    window.requestAnimationFrame(animate);
+    if (y > 0) {
+        window.requestAnimationFrame(animate(x, y, speed));
+    }
 }
 

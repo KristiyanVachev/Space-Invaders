@@ -33,7 +33,7 @@ Player.prototype.moveRight = function () {
 };
 
 Player.prototype.shoot = function () {
-
+    console.log("create new projectile");
     new Projectile(this.x + (this.width / 2), this.y);
 
 };
