@@ -41,12 +41,14 @@ Player.prototype.getID = function(){
     return this.id;
 }
 
-Player.prototype.moveLeft = function () {
+Player.prototype.moveLeft = function (ctx) {
     this.x -= 10;
+    ctx.clearRect(this.x + 10, this.y, this.width, this.height);
 };
 
-Player.prototype.moveRight = function () {
+Player.prototype.moveRight = function (ctx) {
     this.x += 10;
+    ctx.clearRect(this.x - 10, this.y, this.width, this.height);
 };
 
 Player.prototype.shoot = function () {

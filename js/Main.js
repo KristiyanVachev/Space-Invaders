@@ -35,22 +35,12 @@ loadImages(sources, function(images) {
 });
 
 function moveLeft() {
-    ctx.clearRect(0, 0, 800, 600);
-    player.moveLeft();
-    for (var i = 0; i < invadersArr.length; i++) {
-        var element = invadersArr[i];
-        element.draw(ctx);
-    }
+    player.moveLeft(ctx);
     player.draw(ctx);
 }
 
 function moveRight() {
-    ctx.clearRect(0, 0, 800, 600);
-    player.moveRight();
-    for (var i = 0; i < invadersArr.length; i++) {
-        var element = invadersArr[i];
-        element.draw(ctx);
-    }
+    player.moveRight(ctx);
     player.draw(ctx);
 }
 
